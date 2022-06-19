@@ -1,0 +1,13 @@
+{
+  "name": "Thingiverse Zip Downloader",
+  "version": "0.0.1",
+  "description": "Replace the Download All button on thingiverse to be a link to <thing url>/zip",
+  "manifest_version": 3,
+  "author": "Brian Weyer",
+  "content_scripts": [
+    {
+      "matches": ["https://*.thingiverse.com/*"],
+      "js": ["content-script.js"]
+    }
+  ]
+}
