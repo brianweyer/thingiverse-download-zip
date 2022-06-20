@@ -25,6 +25,5 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: browser-actions/setup-chrome@latest
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: chrome --help
+      - name: Pack extension from GH workspace
+        run: chrome --pack-extension=$GITHUB_WORKSPACE
