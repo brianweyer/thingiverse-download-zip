@@ -28,9 +28,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Install Chrome
-        run: sudo apt update -y && sudo apt install -y chromium-browser
+        run: sudo apt update && sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && sudo apt install -y ./google-chrome-stable_current_amd64.deb
       - name: Pack extension from GH workspace
-        run: sudo chromium --headless --no-sandbox --disable-gpu --pack-extension=$GITHUB_WORKSPACE && tree ~
+        run: sudo google-chrome --headless --no-sandbox --disable-gpu --pack-extension=$GITHUB_WORKSPACE && tree ~
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
