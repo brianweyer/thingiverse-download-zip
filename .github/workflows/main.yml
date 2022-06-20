@@ -28,7 +28,7 @@ jobs:
       - name: Pack extension from GH workspace
         run: pwd && chrome --headless --disable-gpu --pack-extension=.
       - name: LS
-        run: ls /home/runner/work/thingiverse-download-zip/thingiverse-download-zip
+        run: tree /home/runner/work
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
