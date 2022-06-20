@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "main", "actions-build-artifact" ]
   pull_request:
     branches: [ "main" ]
 
@@ -25,6 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: browser-actions/setup-chrome@latest
+      - name: PWD
+        run: pwd
       - name: Pack extension from GH workspace
         run: chrome --headless --disable-gpu --pack-extension=$GITHUB_WORKSPACE
       - name: Archive build artifacts
@@ -32,4 +34,4 @@ jobs:
         with:
           name: crx
           path: |
-            ../thingiverse-zip-ext.crx
+            thingiverse-zip-ext.crx
