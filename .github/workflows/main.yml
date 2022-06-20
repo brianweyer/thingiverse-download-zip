@@ -27,3 +27,9 @@ jobs:
       - uses: browser-actions/setup-chrome@latest
       - name: Pack extension from GH workspace
         run: chrome --headless --disable-gpu --pack-extension=$GITHUB_WORKSPACE
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: crx
+          path: |
+            ../thingiverse-zip-ext.crx
