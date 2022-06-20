@@ -27,4 +27,4 @@ jobs:
       - uses: browser-actions/setup-chrome@latest
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: chrome -v
+        run: chrome --help
