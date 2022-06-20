@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: browser-actions/setup-chrome@latest
       - name: Pack extension from GH workspace
-        run: pwd && chrome --headless --disable-gpu --pack-extension=.
+        run: pwd && chrome --headless --disable-gpu --pack-extension=. && ls -al
       - name: LS
         run: tree /home/runner/work
       - name: Archive build artifacts
