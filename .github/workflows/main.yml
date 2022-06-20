@@ -25,10 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: browser-actions/setup-chrome@latest
-      - name: PWD
-        run: pwd
       - name: Pack extension from GH workspace
         run: chrome --headless --disable-gpu --pack-extension=$GITHUB_WORKSPACE
+      - name: LS
+        run: ls /home/runner/work/thingiverse-download-zip
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
