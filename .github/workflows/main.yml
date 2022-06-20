@@ -34,4 +34,4 @@ jobs:
         with:
           name: crx
           path: |
-            thingiverse-zip-ext.crx
+            /home/runner/work/thingiverse-download-zip/thingiverse-zip-ext.crx
