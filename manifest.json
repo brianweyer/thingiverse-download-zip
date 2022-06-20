@@ -6,7 +6,7 @@
   "author": "Brian Weyer",
   "content_scripts": [
     {
-      "matches": ["https://*.thingiverse.com/thing:*", "https://thingiverse.com/thing:*"],
+      "matches": ["*://*.thingiverse.com/thing:*"],
       "js": ["content-script.js"]
     }
   ]
