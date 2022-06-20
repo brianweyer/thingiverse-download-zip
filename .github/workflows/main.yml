@@ -24,9 +24,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - uses: browser-actions/setup-chrome@latest
+      - name: Install Chrome
+        run: sudo apt update && sudo apt install chromium-browser
       - name: Pack extension from GH workspace
-        run: cd /tmp && chrome --headless --pack-extension=$GITHUB_WORKSPACE && tree /tmp && tree /home/runner/work && echo $GITHUB_WORKSPACE
+        run: cd /tmp && chromium --headless --pack-extension=$GITHUB_WORKSPACE && tree /tmp && tree /home/runner/work && echo $GITHUB_WORKSPACE
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
