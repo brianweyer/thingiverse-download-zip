@@ -28,7 +28,7 @@ jobs:
         run: sudo apt update && sudo apt install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0 libgdk-pixbuf2.0-0 libgtk-3-0 libasound2-dev libgbm-dev libnss3-dev libxss-dev
       - uses: browser-actions/setup-chrome@latest
       - name: Pack extension from GH workspace
-        run: sudo /opt/hostedtoolcache/chromium/latest/x64/chrome --headless --no-sandbox --disable-sandbox --disable-gpu --pack-extension=${GITHUB_WORKSPACE} && tree /home/runner/work/thingiverse-download-zip
+        run: sudo /opt/hostedtoolcache/chromium/latest/x64/chrome --headless --no-sandbox --disable-sandbox --disable-gpu --disable-software-rasterizer --pack-extension=${GITHUB_WORKSPACE} && tree /home/runner/work/thingiverse-download-zip
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
