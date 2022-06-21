@@ -27,18 +27,19 @@ jobs:
       - name: Install CRX
         run: npm install crx
       - name: Pack extension from GH workspace
-        run: npx crx pack -o ~/thingiverse-zip-ext.crx
+        run: npx crx pack -o ~/thingiverse-download-zip.crx
       - uses: "marvinpinto/action-automatic-releases@latest"
         if: startsWith(github.ref, 'refs/tags/')
-        name: Release for $(${{github.ref}}#/refs/tags/)
+        name: Create Release
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${git describe --tags $(git rev-list --tags --max-count=1)}
           prerelease: false
           files: |
-            ~/thingiverse-zip-ext.crx
+            ~/thingiverse-download-zip.crx
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: crx
           path: |
-            ~/thingiverse-zip-ext.crx
+            ~/thingiverse-download-zip.crx
