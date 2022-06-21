@@ -28,6 +28,12 @@ jobs:
         run: npm install crx
       - name: Pack extension from GH workspace
         run: npx crx pack -o ~/thingiverse-zip-ext.crx
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          files: |
+            ~/thingiverse-zip-ext.crx
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
