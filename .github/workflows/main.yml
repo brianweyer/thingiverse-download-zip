@@ -28,8 +28,8 @@ jobs:
         run: npm install crx
       - name: Pack extension from GH workspace
         run: npx crx pack -o ~/thingiverse-zip-ext.crx
-        if: startsWith(github.ref, 'refs/tags/')
       - uses: "marvinpinto/action-automatic-releases@latest"
+        if: startsWith(github.ref, 'refs/tags/')
         name: Release for $(${{github.ref}}#/refs/tags/)
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
