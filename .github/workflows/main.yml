@@ -24,14 +24,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-      - name: Install Deps
-        run: sudo apt update && sudo apt install -y libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0 libgdk-pixbuf2.0-0 libgtk-3-0 libasound2-dev libgbm-dev libnss3-dev libxss-dev
-      - uses: browser-actions/setup-chrome@latest
+      - name: Install CRX
+        run: npm install crx
       - name: Pack extension from GH workspace
-        run: sudo /opt/hostedtoolcache/chromium/latest/x64/chrome --headless --no-sandbox --disable-sandbox --disable-gpu --disable-software-rasterizer --pack-extension=${GITHUB_WORKSPACE} && tree /home/runner/work/thingiverse-download-zip
+        run: crx pack > /tmp/thingiverse-zip-ext
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: crx
           path: |
-            /home/runner/work/thingiverse-download-zip/thingiverse-zip-ext.crx
+            /tmp/thingiverse-zip-ext.crx
