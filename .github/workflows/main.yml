@@ -27,10 +27,10 @@ jobs:
       - name: Install CRX
         run: npm install crx
       - name: Pack extension from GH workspace
-        run: npx crx pack > /tmp/thingiverse-zip-ext.crx
+        run: npx crx pack -o > ~/thingiverse-zip-ext.crx
       - name: Archive build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: crx
           path: |
-            /tmp/thingiverse-zip-ext.crx
+            ~/thingiverse-zip-ext.crx
